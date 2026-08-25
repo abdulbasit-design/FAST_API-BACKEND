@@ -1,0 +1,16 @@
+$kind: http-request
+name: Register Authentication
+url: http://127.0.0.1:8000/auth/register
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"username\": \"ahmed\",\r
+
+    \  \"email\": \"ahmed@example.com\",\r
+
+    \  \"password\": \"123456\"\r
+
+    }"
+order: 4453618442101043

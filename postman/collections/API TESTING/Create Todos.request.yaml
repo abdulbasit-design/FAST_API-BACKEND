@@ -1,0 +1,16 @@
+$kind: http-request
+name: Create Todos
+url: http://127.0.0.1:8000/todos
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"id\": 2,\r
+
+    \  \"title\": \"Learn FastApi\",\r
+
+    \  \"completed\": false\r
+
+    }"
+order: 1787588050964

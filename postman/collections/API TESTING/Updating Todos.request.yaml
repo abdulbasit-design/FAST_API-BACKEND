@@ -1,0 +1,15 @@
+$kind: http-request
+url: http://127.0.0.1:8000/todos/2
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \  \"id\": 2,\r
+
+    \  \"title\": \"updated recently\",\r
+
+    \  \"completed\": true\r
+
+    }"
+order: 4422404165266288

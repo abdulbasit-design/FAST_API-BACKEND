@@ -1,0 +1,5 @@
+$kind: http-request
+name: Fetching Todos
+url: http://127.0.0.1:8000/todos
+method: GET
+order: 4344238157422347

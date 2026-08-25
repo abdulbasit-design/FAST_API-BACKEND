@@ -1,0 +1,5 @@
+$kind: http-request
+name: Delete Todos
+url: http://127.0.0.1:8000/todos/11
+method: DELETE
+order: 4434261847919614
