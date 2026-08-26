@@ -28,7 +28,8 @@ def register_user(user: UserCreate):
     users_collection.insert_one({
         "username": user.username,
         "email": user.email,
-        "password": hashed_password
+        "password": hashed_password,
+        "role":"user"
     })
 
     return {
@@ -63,7 +64,8 @@ def login_user(user: UserLogin):
 
     access_token = create_access_token({
         "user_id": str(existing_user["_id"]),
-        "email": existing_user["email"]
+        "email": existing_user["email"],
+        "role":  existing_user["role"]
     })
 
     return {

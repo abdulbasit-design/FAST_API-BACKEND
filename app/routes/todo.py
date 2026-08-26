@@ -1,9 +1,19 @@
 from fastapi import APIRouter, Depends
 from app.schemas.todo import Todo
 from app.database.connection import todos_collection
-from app.utils.auth import get_current_user
+from app.utils.auth import get_current_user, require_admin
 
 router = APIRouter()
+
+
+@router.get("/admin-test")
+def admin_test(
+    current_user: dict = Depends(require_admin)
+):
+    return {
+        "message": "Welcome Admin",
+        "user": current_user
+    }
 
 
 @router.post("/todos")
