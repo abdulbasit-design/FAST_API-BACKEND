@@ -1,4 +1,4 @@
-# 🚀 FastAPI Backend — JWT Authentication & Role-Based Todo API
+#  FastAPI Backend — JWT Authentication & Role-Based Todo API
 
 A backend REST API built with **FastAPI**, **MongoDB**, **Pydantic**, **JWT authentication**, and **role-based authorization**.
 
