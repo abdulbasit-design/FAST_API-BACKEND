@@ -137,3 +137,66 @@ def delete_todo(
     })
 
     return {"message": "Todo Deleted"}
+
+# ADMIN ROUTES
+
+@router.get("/admin/todos")
+def admin_get_todos(
+    current_user: dict = Depends(require_admin)
+):
+    todos = todos_collection.find(
+        {},
+        {"_id":0}
+    )
+ 
+    return list(todos)
+
+
+@router.get("/admin/todos/{todo_id}")
+def admin_get_todo(
+    todo_id:int,
+    current_user: dict = Depends(require_admin)
+):
+    todo = todos_collection.find_one(
+        {"id": todo_id},
+        {"_id": 0}
+    )
+
+    if not todo:
+        return {"error": "Todo not Found"}
+    
+    return todo
+
+
+@router.put("/admin/todos/{todo_id}")
+def admin_update_todo(
+    todo_id: int,
+    updated_todo: Todo,
+    current_user: dict = Depends(require_admin)
+):
+    todo_data = updated_todo.model_dump()
+
+    result = todos_collection.update_one(
+        {"id":todo_id},
+        {"$set": todo_data}
+    )
+
+    if result.matched_count == 0:
+        return {"error": "Todo not Found"}
+
+    return{"message": "Todo is updated by ADMIN"}
+
+@router.delete("/admin/todos/{todo_id}")
+def admin_delete_todo(
+    todo_id: int,
+    current_user: dict = Depends(require_admin)
+):
+
+    result = todos_collection.delete_one(
+        {"id":todo_id}
+    )
+
+    if result.deleted_count == 0:
+        return {"error": "Todo not Found"}
+    
+    return {"message": "Todo Deleted by Admin"}
